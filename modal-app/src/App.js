@@ -17,22 +17,64 @@ import {Modal, Button} from 'react-bootstrap';
  * 
  */
 function App() {
-
+  //-- MODAL STATE VARIABLE AND FUNCTIONS FOR ALTERING STATE VARIABLE --//
   // state variable
   const [show, setShow] = useState(false);
-
-
   // Functions that can change the state variable
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
 
+// Step One: Add an array of objects to be presented in modal window.
+
+let family = [
+  {
+    'name':'Yogi',
+    'family member':'Father',
+    'job':'Publix'
+  },
+  {
+    'name':'Beth',
+    'family member':'Mother',
+    'job':'School Board'
+  },
+  {
+    'name':'Justin',
+    'family member':'Sibling',
+    'job':'Outback'
+  },
+  {
+    'name':'Matt',
+    'family member':'Sibling',
+    'job':'HVAC'
+  },
+  {
+    'name':'Aurora',
+    'family member':'Matt\'s daughter',
+    'job':'Being cute'
+  }
+]
+
+
+
+
+
+
   return (
     <div className="App">
+
       {/* the Button that opens the modal window */}
       <Button variant="primary" onClick={handleShow}>
         Click Me!
       </Button>
+
+
+
+
+
+
+
+
 
 
       {/* MODAL WINDOW */}
