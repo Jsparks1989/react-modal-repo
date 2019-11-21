@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {Modal, Button} from 'react-bootstrap';
 
+
 /*
  * 
  * 1) The state variable 'show' is used to determine the visibility of the modal window. 
@@ -30,35 +31,39 @@ function App() {
 let family = [
   {
     'name':'Yogi',
-    'family member':'Father',
+    'familyMember':'Father',
     'job':'Publix'
   },
   {
     'name':'Beth',
-    'family member':'Mother',
+    'familyMember':'Mother',
     'job':'School Board'
   },
   {
     'name':'Justin',
-    'family member':'Sibling',
+    'familyMember':'Sibling',
     'job':'Outback'
   },
   {
     'name':'Matt',
-    'family member':'Sibling',
+    'familyMember':'Sibling',
     'job':'HVAC'
   },
   {
     'name':'Aurora',
-    'family member':'Matt\'s daughter',
+    'familyMember':'Matt\'s daughter',
     'job':'Being cute'
   }
-]
+];
 
-
-
-
-
+function familyMap(){ 
+  family.map(member => {
+    console.log(member.name);
+    console.log(member.familyMember);
+    console.log(member.job);
+  });
+}
+familyMap();
 
   return (
     <div className="App">
@@ -70,24 +75,25 @@ let family = [
 
 
 
-
-
-
-
-
-
-
       {/* MODAL WINDOW */}
       <Modal show={show} onHide={handleClose}>
-        {/* Modal Window Heading */}
         <Modal.Header closeButton>
-          <Modal.Title>Modal Heading</Modal.Title>
+          <Modal.Title>This is my family</Modal.Title>
         </Modal.Header>
+        {/* Step Two: Map the props variable 'family' and present it in the body of the Modal window. 
+            The browser console shows an error for map: Each child should have a unique 'key' prop. 
+            Not a big deal. Doesnt break the app.    
+        */}
+        <Modal.Body>
+          {family.map(member => (
+          <div>
+            <p>Name: {member.name}</p>
+            <p>Family position: {member.familyMember}</p>
+            <p>Job: {member.job}</p>
+          </div>
+          ))}
+        </Modal.Body>
 
-        {/* Modal Window Body */}
-        <Modal.Body>This is the body of the modal window</Modal.Body>
-
-        {/* Modal Window Footer */}
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
           <Button variant="primary" onClick={handleClose}>Save</Button>
